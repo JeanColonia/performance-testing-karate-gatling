@@ -1,4 +1,4 @@
-package examples;
+package performance;
 
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
@@ -9,7 +9,7 @@ class ExamplesTest {
 
     @Test
     void testParallel() {
-        Results results = Runner.path("classpath:examples")
+        Results results = Runner.path("classpath:performance")
                 //.outputCucumberJson(true)
                 .parallel(5);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
