@@ -47,13 +47,11 @@
       <artifactId>gatling-maven-plugin</artifactId>
       <version>${gatling.plugin.version}</version>
       <configuration>
-          <simulationsFolder>src/test/java</simulationsFolder>
-          <includes>
-              <include>mock.CatsKarateSimulation</include>
-          </includes>
+          <simulationsFolder>src/test/java/performance</simulationsFolder>
+          <configFolder>src/test/java/performance/data</configFolder>
       </configuration>               
   </plugin>
-  
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
