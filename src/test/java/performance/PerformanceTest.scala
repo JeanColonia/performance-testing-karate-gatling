@@ -10,8 +10,9 @@ class PerformanceTest extends Simulation {
     // "/v2/pet/{petId}" -> Nil
   )
 
-  //protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
- 
+  protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
+  protocol.nameResolver = (req, ctx) => req.getHeader("karate-name-resolver")
+
   val petCSV = csv("pets.csv").circular
   val create = scenario("get pets by pending status").feed(petCSV).exec(karateFeature("classpath:performance/getPets.feature"))
 
