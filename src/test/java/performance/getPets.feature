@@ -4,6 +4,7 @@ Background: setting variables
  * def baseUrl = "https://petstore.swagger.io/v2"
  * def sleep = function(ms){ java.lang.Thread.sleep(ms); }
  * def pause = karate.get('_gatling.pause', sleep)
+ * def petId = __gatling.petId
 @getPets
 Scenario: get pets by pending status
  Given url baseUrl
@@ -13,7 +14,7 @@ Scenario: get pets by pending status
  When method GET
  Then status 200
  * print response
- * def petId = response[0].id
+ # * def petId = response[0].id
  * pause(5000)
  Given url baseUrl
  And path "/pet/",petId

@@ -12,17 +12,17 @@ class PerformanceTest extends Simulation {
 
   //protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
  
-
-  val create = scenario("get pets by pending status").exec(karateFeature("classpath:performance/getPets.feature"))
+  val petCSV = csv("pets.csv").circular
+  val create = scenario("get pets by pending status").feed(petCSV).exec(karateFeature("classpath:performance/getPets.feature"))
 
   setUp(
     create.inject(
       atOnceUsers(3), //3
       nothingFor(4 seconds),
-      constantUsersPerSec(1).during(10 seconds), //10
-      constantUsersPerSec(2).during(10 seconds), //20 
-      rampUsersPerSec(2).to(10).during(10 seconds), //2-10
-      nothingFor(4 seconds)
+      constantUsersPerSec(1).during(1 seconds), //10
+      // constantUsersPerSec(2).during(10 seconds), //20 
+      // rampUsersPerSec(2).to(10).during(10 seconds), //2-10
+      // nothingFor(4 seconds)
 
       ).protocols(protocol)
   )
